@@ -1,13 +1,16 @@
 package com.grimmauld.createpizzaaddon.setup;
-public class ModBlocks {
 
-    /*
-    @ObjectHolder("createpizzaaddon:dynamo")
-    public static Dynamo DYNAMO;
+import com.grimmauld.createpizzaaddon.registrate.ObjectRegisterer;
+import com.tterrag.registrate.util.entry.BlockEntry;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.item.BlockItem;
 
-    @ObjectHolder("createpizzaaddon:dynamo")
-    public static TileEntityType<DynamoTile> DYNAMO_TILE;
-     */
+public class ModBlocks extends ObjectRegisterer {
 
-
+    public static final BlockEntry<Block> SOME_BLOCK = REGISTRATE.block("test_block", Block::new)
+            .properties(p -> Block.Properties.from(Blocks.REDSTONE_LAMP))
+            .defaultLang()
+            .simpleItem()
+            .register();
 }

@@ -1,12 +1,18 @@
 package com.grimmauld.createpizzaaddon;
 
+import com.grimmauld.createpizzaaddon.registrate.PizzaRegistrate;
 import com.grimmauld.createpizzaaddon.setup.*;
+import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.block.Block;
+import net.minecraft.block.CommandBlockBlock;
+import net.minecraft.block.WeightedPressurePlateBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -24,14 +30,20 @@ public class CreatePizzaAddon {
     public static ModSetup setup = new ModSetup();
     public static CreatePizzaAddon instance;
 
+    private static PizzaRegistrate REGISTRATE;
+
 
     public CreatePizzaAddon() {
         instance = this;
+        REGISTRATE = PizzaRegistrate.create(ID);
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_CONFIG);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.COMMON_CONFIG);
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
+        ModBlocks.register();
+        ModItems.register();
 
         Config.loadConfig(Config.CLIENT_CONFIG, FMLPaths.CONFIGDIR.get().resolve("create-pizza-addon-client.toml"));
         Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("create-pizza-addon-common.toml"));
@@ -52,5 +64,9 @@ public class CreatePizzaAddon {
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
 
         }
+    }
+
+    public static PizzaRegistrate getRegistrate(){
+        return REGISTRATE;
     }
 }

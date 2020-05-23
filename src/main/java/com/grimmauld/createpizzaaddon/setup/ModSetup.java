@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 
 public class ModSetup {
-	public static ItemGroup itemGroup = new ItemGroup("createpizzaaddon") {
+	public static ItemGroup pizzaGroup = new ItemGroup("createpizzaaddon") {
 		@Override
 		public ItemStack createIcon() {
 			return new ItemStack(Items.COOKED_BEEF); // FIXME add pizza item here
