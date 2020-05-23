@@ -2,17 +2,13 @@ package com.grimmauld.createpizzaaddon.setup;
 
 import com.grimmauld.createpizzaaddon.registrate.ObjectRegisterer;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 
+
+
 public class ModItems extends ObjectRegisterer {
-    /*
-    FIXME: How do items work???
-    public static final ItemEntry<Item> SOME_BLOCK = REGISTRATE.block("test_block", Block::new)
-            .item(BlockItem::new)
-            .defaultLang()
-            // .defaultModel()
-            .register();
-    */
+
+    public static final ItemEntry<Item> SOME_ITEM = REGISTRATE.item("item_name", Item::new).lang("My new Example Item").register();
+
+    public static void register() {/* Just here so the class is loaded and stuff is registered */}
 }

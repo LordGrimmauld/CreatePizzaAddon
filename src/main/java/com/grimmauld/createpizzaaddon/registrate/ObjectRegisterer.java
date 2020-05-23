@@ -30,6 +30,4 @@ public abstract class ObjectRegisterer {
     protected static <T> Tag<T> tag(TagCollection<T> collection, String domain, String name) {
         return collection.getOrCreate(new ResourceLocation(domain, name));
     }
-
-    public static void register() {/* Just here so the class is loaded and stuff is registered */}
 }
